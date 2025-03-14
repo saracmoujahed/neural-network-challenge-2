@@ -1,19 +1,45 @@
-# Attrition Prediction Model
+# Employee Attrition & Department Prediction  
 
-## Overview
+This Jupyter Notebook implements a **branched neural network** to help HR predict:  
+1. **Employee Attrition** – Whether an employee is likely to leave the company.  
+2. **Best-Fit Department** – The department where an employee is most suited.  
 
-This program uses a multi-output neural network to predict employee attrition and department based on various features such as education, age, job satisfaction, and work-life balance. It leverages machine learning libraries like scikit-learn and TensorFlow/Keras to build, train, and evaluate the model.
+## **Dataset**  
+The notebook uses an employee attrition dataset, loaded from an external CSV file.
 
-## Dataset
+## **Dependencies**  
+Ensure you have the following libraries installed before running the notebook:  
 
-The program utilizes an attrition dataset (e.g., `attrition.csv`) containing information about employees and their attrition status. The dataset should include features relevant to attrition and the department to which the employee belongs.
+```bash
+pip install pandas numpy scikit-learn tensorflow
+```
 
-## Dependencies
+## **Workflow Overview**  
 
-- Python 3.x
-- scikit-learn
-- TensorFlow/Keras
-- pandas
-- NumPy
+### **1. Data Preprocessing**
+- Loads data using `pandas`
+- Encodes categorical variables  
+- Normalizes numerical features with `StandardScaler`
+- Splits data into training and testing sets
 
-To install the dependencies, you can use pip:
+### **2. Neural Network Model**
+A **branched neural network** is implemented using **TensorFlow/Keras**:
+- **Shared input layers** process general employee features.
+- Two output branches:
+  - **Attrition Prediction** – Uses a binary classification layer (Sigmoid activation).  
+  - **Department Prediction** – Uses a multi-class classification layer (Softmax activation).  
+
+### **3. Model Training & Evaluation**
+- Compiles the model with appropriate loss functions (`binary_crossentropy` and `categorical_crossentropy`).
+- Trains the model using training data.
+- Evaluates model performance on test data.
+
+## **Usage**
+1. Open the notebook and run all cells sequentially.
+2. The trained model can be used to make predictions on new employee data.
+
+## **Possible Improvements**
+- Hyperparameter tuning for better accuracy.
+- Feature engineering to improve model performance.
+- Implementing dropout layers to prevent overfitting.
+
